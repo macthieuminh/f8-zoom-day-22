@@ -50,10 +50,11 @@
 
             <!-- Tabs -->
             <div class="tabs">
-                <div class="tab-list">
-                    <button class="tab-button active">Active Task</button>
-                    <button class="tab-button">Completed</button>
-                </div>
+                <!-- <div class="tab-list">
+                    <button class="tab-button all-tasks active">Tất cả task</button>
+                    <button class="tab-button undone-tasks">Task chưa hoàn thành</button>
+                    <button class="tab-button done-tasks">Task đã hoàn thành</button>
+                </div> -->
             </div>
 
             <!-- Task Grid -->
@@ -214,12 +215,12 @@
                         <div class="form-group">
                             <label class="form-label" for="taskTitle">Task Title *</label>
                             <input
-                            type="text"
-                            id="taskTitle"
-                            name="title"
-                            class="form-input"
-                            placeholder="Enter task title"
-                            required />
+                                type="text"
+                                id="taskTitle"
+                                name="title"
+                                class="form-input"
+                                placeholder="Enter task title"
+                                required />
                         </div>
 
                         <div class="form-group">
@@ -227,10 +228,10 @@
                                 >Description</label
                             >
                             <textarea
-                            id="taskDescription"
-                            name="description"
-                            class="form-textarea"
-                            placeholder="Enter task description"></textarea>
+                                id="taskDescription"
+                                name="description"
+                                class="form-textarea"
+                                placeholder="Enter task description"></textarea>
                         </div>
 
                         <div class="form-group">
@@ -264,23 +265,31 @@
                                         >Start Time</label
                                     >
                                     <input
-                                    type="time"
-                                    id="startTime"
-                                    name="startTime"
-                                    class="form-input" />
+                                        type="time"
+                                        id="startTime"
+                                        name="startTime"
+                                        class="form-input" />
                                 </div>
                                 <div>
                                     <label class="form-label" for="endTime"
                                         >End Time</label
                                     >
-                                    <input type="time" id="endTime" name="endTime" class="form-input" />
+                                    <input
+                                        type="time"
+                                        id="endTime"
+                                        name="endTime"
+                                        class="form-input" />
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="form-label" for="taskDate">Due Date</label>
-                            <input type="date" id="taskDate" name="date" class="form-input" />
+                            <input
+                                type="date"
+                                id="taskDate"
+                                name="date"
+                                class="form-input" />
                         </div>
 
                         <div class="form-group">
