@@ -105,7 +105,6 @@ todoForm.onsubmit = (event) => {
     event.preventDefault()
     const formData = Object.fromEntries(new FormData(todoForm))
     const taskTitle = $("#taskTitle")
-    console.log(formData.title)
     todoTasks.forEach((tab) => {
         tab = tab.title.toLowerCase()
         const formDataTitle = formData.title.toLowerCase()
@@ -117,6 +116,7 @@ todoForm.onsubmit = (event) => {
             taskTitle.oninput = function () {
                 taskTitle.style.outline = "none"
             }
+            popupToast(false)
             throw new Error("Cần thay đổi tên Task Title!")
         }
     })
@@ -127,6 +127,7 @@ todoForm.onsubmit = (event) => {
         todoTasks.unshift(formData)
     }
     saveTasks()
+    popupToast(true)
     closeModal()
     renderTasks()
 }
@@ -241,6 +242,34 @@ function renderTab() {
     allTasks.addEventListener("click", () => filterTasks("all"))
     undoneTasks.addEventListener("click", () => filterTasks("undone"))
     doneTasks.addEventListener("click", () => filterTasks("done"))
+}
+function popupToast(status) {
+    const toastContainer = $('#toast-container')
+    const icon = document.createElement('i')
+    const toast = document.createElement('div')
+    icon.classList.add('icon','fa-solid', 'fa-2xl')
+    toast.classList.add('toast')
+
+    if(status)  {
+        toast.classList.add('success')
+        icon.classList.add('fa-circle-check')
+        toast.innerText = "Thêm task thành công!"
+    } else {
+        toast.classList.add('error')
+        icon.classList.add('fa-circle-xmark')
+        toast.innerText = "Không thể thêm task!!" 
+
+    }
+    
+    toast.classList.add(status)
+    toast.appendChild(icon)
+
+    toastContainer.appendChild(toast)
+
+    setTimeout(() => {
+    toast.remove();
+    icon.remove();
+    }, 3500);
 }
 
 renderTab()
