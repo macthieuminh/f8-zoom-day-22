@@ -15,10 +15,17 @@ let taskCards = $$(".task-card")
 
 const currentTab = JSON.parse(localStorage.getItem("currentTab")) ?? "all"
 const todoTasks = JSON.parse(localStorage.getItem("todoTasks")) ?? []
-let editIndex = null
+let editIndex = null, escKeydownHandler;
 function openModal() {
     addTaskModal.className = "modal-overlay show"
-
+    if(!escKeydownHandler) {
+        escKeydownHandler = function (e) {
+            if(e.key === "Esc" || e.key === "Escape") {
+                closeModal()
+            }
+        }
+    }
+    document.body.addEventListener("keydown", escKeydownHandler)
     setTimeout(() => {
         titleInput.focus()
     }, 100)
@@ -42,6 +49,10 @@ function closeModal() {
     }, 100)
     todoForm.reset()
     editIndex = null
+
+    if (escKeydownHandler) {
+        document.body.removeEventListener("keydown", escKeydownHandler)
+    }
 }
 addBtn.onclick = openModal
 modalCloseBtn.onclick = closeModal
