@@ -203,8 +203,6 @@ function escapeHTML(html) {
     div.textContent = html
     return div.innerHTML
 }
-  git config --global user.email "macthieuminh@gmail.com"
-  git config --global user.name "macthieuminh"
 function filterTasks(filter) {
     let taskCards = $$(".task-card")
 
